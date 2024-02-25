@@ -47,5 +47,9 @@ public class SanPhamServiceImpl implements SanPhamService {
 		// TODO Auto-generated method stub
 		sanphamRepository.deleteById(id);
 	}
-
+	@Override
+	public List<SanPham> getTheoDm(String id)
+	{
+		return sanphamRepository.findByMaDanhMuc(id);
+	}
 }
