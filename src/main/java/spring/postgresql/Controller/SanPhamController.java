@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import spring.postgresql.Entity.DanhMuc;
 import spring.postgresql.Entity.SanPham;
@@ -66,17 +67,33 @@ public class SanPhamController {
         //     }
         // }
         // throw new RuntimeException("MaDanhMuc không hợp lệ");
-        ResponseEntity<List<DanhMuc>> responseEntity = restTemplate.exchange("http://localhost:8059/api/dm/get/danhmuc",HttpMethod.GET,null,new ParameterizedTypeReference<List<DanhMuc>>() {});
+    //      responseEntity = restTemplate.exchange("http://localhost:8059/api/dm/get/danhmuc",HttpMethod.GET,null,new ParameterizedTypeReference<List<DanhMuc>>() {});
     
-         List<DanhMuc> danhMucList = responseEntity.getBody();
+    //      List<DanhMuc> danhMucList = responseEntity.getBody();
     
-        for (DanhMuc danhMuc : danhMucList) {
-            if (danhMuc.getId().equals(SanPham.getMaDanhMuc())) {
-                return sanphamService.saveSanPham(SanPham);
-            }
-        }
-    
-    throw new RuntimeException("MaDanhMuc không hợp lệ");
+    //     for (DanhMuc danhMuc : danhMucList) {
+    //         if (danhMuc.getId().equals(SanPham.getMaDanhMuc())) {
+    //             return sanphamService.saveSanPham(SanPham);
+    //         }ResponseEntity<List<DanhMuc>>
+    //     }
+    // throw new RuntimeException("MaDanhMuc không hợp lệ");
+    // int checkId=restTemplate.getForObject("http://localhost:8059/api/dm/get/checkiddanhmuc", Integer.class);
+    String url = "http://localhost:8059/api/dm/get/checkiddanhmuc";
+        
+        // Xây dựng URL với tham số từ @RequestParam
+    UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url)
+            .queryParam("id", SanPham.getMaDanhMuc());
+    System.err.println(builder.toUriString());
+    int checkId = restTemplate.getForObject(builder.toUriString(), int.class);
+
+    if (checkId==1)
+    {
+        return sanphamService.saveSanPham(SanPham);
+    }
+    else
+    {
+        throw new RuntimeException("MaDanhMuc không hợp lệ");
+    }
 }
     
 
