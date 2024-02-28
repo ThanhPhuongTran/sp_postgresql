@@ -8,7 +8,7 @@ public class SanPham {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	private int id;
+	private Long id;
 	@Column(name="TenSanPham")
 	private String TenSanPham;
 	@Column(name="NgayTao")
@@ -28,7 +28,7 @@ public class SanPham {
 		// TODO Auto-generated constructor stub
 	}
 
-	public SanPham(int id, String tenSanPham, Date ngayTao, int soLuong, String moTa, Long gia, int sanPhamTot,
+	public SanPham(Long id, String tenSanPham, Date ngayTao, int soLuong, String moTa, Long gia, int sanPhamTot,
 			String maDanhMuc) {
 		this.id = id;
 		TenSanPham = tenSanPham;
@@ -40,11 +40,11 @@ public class SanPham {
 		this.maDanhMuc = maDanhMuc;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -103,7 +103,5 @@ public class SanPham {
 	public void setMaDanhMuc(String maDanhMuc) {
 		this.maDanhMuc = maDanhMuc;
 	}
-	
-	
 	
 }

@@ -58,26 +58,6 @@ public class SanPhamController {
 
     @PostMapping
     public SanPham saveSanPham(@RequestBody SanPham SanPham) {
-        // List<DanhMuc> DanhMucList = restTemplate.getForObject("http://localhost:8059/api/dm/get/danhmuc", List.class);
-        // // System.err.println(DanhMucList);
-        // for (DanhMuc danhMuc : DanhMucList) {
-        //     if (danhMuc.getId().equals(SanPham.getMaDanhMuc())) {
-        //         // Nếu trùng, thực hiện lưu và trả về SanPham
-        //         return sanphamService.saveSanPham(SanPham);
-        //     }
-        // }
-        // throw new RuntimeException("MaDanhMuc không hợp lệ");
-    //      responseEntity = restTemplate.exchange("http://localhost:8059/api/dm/get/danhmuc",HttpMethod.GET,null,new ParameterizedTypeReference<List<DanhMuc>>() {});
-    
-    //      List<DanhMuc> danhMucList = responseEntity.getBody();
-    
-    //     for (DanhMuc danhMuc : danhMucList) {
-    //         if (danhMuc.getId().equals(SanPham.getMaDanhMuc())) {
-    //             return sanphamService.saveSanPham(SanPham);
-    //         }ResponseEntity<List<DanhMuc>>
-    //     }
-    // throw new RuntimeException("MaDanhMuc không hợp lệ");
-    // int checkId=restTemplate.getForObject("http://localhost:8059/api/dm/get/checkiddanhmuc", Integer.class);
     String url = "http://localhost:8059/api/dm/get/checkiddanhmuc";
         
         // Xây dựng URL với tham số từ @RequestParam
@@ -94,9 +74,7 @@ public class SanPhamController {
     {
         throw new RuntimeException("MaDanhMuc không hợp lệ");
     }
-}
-    
-
+    }
     @PutMapping
     public SanPham updateSanPham(@RequestBody SanPham SanPham) {
         return sanphamService.updateSanPham(SanPham);
@@ -107,6 +85,5 @@ public class SanPhamController {
         sanphamService.deleteSanPham(id);
     }
 
-    // Using Request and Response with save and update SanPham
 
 }
