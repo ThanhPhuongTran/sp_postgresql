@@ -58,7 +58,7 @@ public class SanPhamController {
 
     @PostMapping
     public SanPham saveSanPham(@RequestBody SanPham SanPham) {
-    String url = "http://localhost:8059/api/dm/get/checkiddanhmuc";
+    String url = "http://danhmuc/api/dm/get/checkiddanhmuc";
         
         // Xây dựng URL với tham số từ @RequestParam
     UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url)
