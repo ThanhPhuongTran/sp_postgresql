@@ -65,7 +65,9 @@ public class SanPhamController {
             .queryParam("id", SanPham.getMaDanhMuc());
     System.err.println(builder.toUriString());
     int checkId = restTemplate.getForObject(builder.toUriString(), int.class);
-
+  
+    System.err.println("Ket Qua Check:");
+    System.err.println(checkId);
     if (checkId==1)
     {
         return sanphamService.saveSanPham(SanPham);

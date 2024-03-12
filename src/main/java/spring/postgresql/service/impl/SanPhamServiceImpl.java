@@ -35,7 +35,9 @@ public class SanPhamServiceImpl implements SanPhamService {
 	@Override
 	public SanPham saveSanPham(SanPham sanPham) throws IllegalArgumentException {
         // Kiểm tra id và maDanhMuc không được trống
-        if (sanPham.getId() == null || sanPham.getMaDanhMuc() == null || sanPham.getMaDanhMuc().isEmpty()) {
+		System.err.println("Ma danh muc la: ");
+		System.err.println(sanPham.getMaDanhMuc());
+        if ( sanPham.getMaDanhMuc() == null || sanPham.getMaDanhMuc().isEmpty()) {
             throw new IllegalArgumentException("Id và mã danh mục không được trống.");
         }
 
